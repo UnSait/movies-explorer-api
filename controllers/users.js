@@ -37,6 +37,10 @@ module.exports.patchProfile = (req, res, next) => {
         next(new BadRequest('Переданы некорректные данные'));
         return;
       }
+      if (err.code === 11000) {
+        next(new Conflict('Почта уже используется'));
+        return;
+      }
       next(err);
     });
 };
