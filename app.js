@@ -1,6 +1,5 @@
 require('dotenv').config();
 
-const { DATA_MOVIES } = process.env;
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -12,7 +11,7 @@ const centralizedErrorHandler = require('./middlewares/centralizedErrorHandler')
 
 const Cors = require('./middlewares/Cors');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3000, DATA_MOVIES = 'mongodb://localhost:27017/moviesdb' } = process.env;
 
 mongoose.connect(DATA_MOVIES);
 
